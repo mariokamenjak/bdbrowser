@@ -65,53 +65,7 @@ Page {
                      Row{
                          height:parent.height
                          width:parent.width
-                     Column
-                     {
-                         TextArea
-                                         {
-                                             id:textfield2
-                                             text: "http://google.com"
-                                             width: units.gu(4)
-                                             height: units.gu(75)
-                                             contentWidth: units.gu(1.4)
-                                             autoSize: true
-                                             maximumLineCount: 0
-                                             Keys.onReturnPressed:
-                                             {
-                                                    if (textfield2.text.substring(0, 7) != "http://")
-                                                    textfield.text = "http://" + textfield2.text;
-                                                    webview.url = textfield2.text
-                                             }
-                                           }
-                         Button
-                                         {
-                                             objectName: "button"
-                                             iconSource: "refresh.png"
-                                             width: units.gu(4)
-                                             //text: i18n.tr("Osvježi")
-                                             onClicked: {
-                                                 webview.reload()
-                                             }
-                                         }
-                         Button {
-                                             objectName: "button"
-                                             iconSource: "forward.png"
-                                             width: units.gu(4)
-                                             //text: i18n.tr("Naprijed")
-                                             onClicked: {
-                                                 webview.goForward()
-                                             }
-                                         }
-                         Button {
-                                             objectName: "button"
-                                             iconSource: "backward.png"
-                                             width: units.gu(4)
-                                             text: i18n.tr("Natrag")
-                                             onClicked: {
-                                                 webview.goBack()
-                                             }
-                                         }
-                     }
+
 
 
 
@@ -163,6 +117,72 @@ Page {
 
 
                                   }
+                     Panel {
+                         id: panel
+                         opened: true
+                         align: Qt.AlignLeft
+                         anchors {
+                             left: parent.left
+                             //right: parent.right
+                             bottom: parent.bottom
+                             top: parent.top
+                         }
+                         height: parent.width
+                         width: units.gu(4.1)
+                         Item {
+                             anchors.fill: parent
+                             // two properties used by the toolbar delegate:
+                             property bool opened: panel.opened
+                             property bool animating: panel.animating
+                             Column
+                             {
+                                 TextArea
+                                                 {
+                                                     id:textfield2
+                                                     text: "http://google.com"
+                                                     width: units.gu(4)
+                                                     height: units.gu(75)
+                                                     contentWidth: units.gu(1.4)
+                                                     autoSize: true
+                                                     maximumLineCount: 0
+                                                     Keys.onReturnPressed:
+                                                     {
+                                                            if (textfield2.text.substring(0, 7) != "http://")
+                                                            textfield.text = "http://" + textfield2.text;
+                                                            webview.url = textfield2.text
+                                                     }
+                                                   }
+                                 Button
+                                                 {
+                                                     objectName: "button"
+                                                     iconSource: "refresh.png"
+                                                     width: units.gu(4)
+                                                     //text: i18n.tr("Osvježi")
+                                                     onClicked: {
+                                                         webview.reload()
+                                                     }
+                                                 }
+                                 Button {
+                                                     objectName: "button"
+                                                     iconSource: "forward.png"
+                                                     width: units.gu(4)
+                                                     //text: i18n.tr("Naprijed")
+                                                     onClicked: {
+                                                         webview.goForward()
+                                                     }
+                                                 }
+                                 Button {
+                                                     objectName: "button"
+                                                     iconSource: "backward.png"
+                                                     width: units.gu(4)
+                                                     text: i18n.tr("Natrag")
+                                                     onClicked: {
+                                                         webview.goBack()
+                                                     }
+                                                 }
+                             }
+                         }
+                     }
 
                  }
 
